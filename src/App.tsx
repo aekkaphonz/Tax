@@ -2,17 +2,25 @@ import "./App.css";
 import Filing from "./component/FilingForm/FilingForm";
 import StepProgress from "./component/Step/StepProgress";
 import ButtonClick from "./component/Button/buttonClick";
-import Additional from "./component/CssFile/Test";
-import InputDetail from "./component/Radio/RadioGroup";
+
 import TaxFilDetail from "./component/Confirm&Review/Confirm&Review";
 import SubmitButton from "./component/Button/Submitbotton";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 
 function App() {
   const [isValid, setIsValid] = useState(false);
-  const [formData, setFormData] = useState<any>({}); 
+  const [formData, setFormData] = useState<any>({});
+  const [step, setStep] = useState(1);
+  const totalSteps = 2;
 
+  const handleNext = () => {
+    if (step < totalSteps) setStep(step + 1);
+  };
+
+  const handlePrev = () => {
+    if (step > 1) setStep(step - 1);
+  };
   const handleSubmit = () => {
     console.log("Submitted Tax Data:", formData);
     alert("Data Submitted Successfully!");
@@ -25,15 +33,22 @@ function App() {
           <h1 className="text-3xl font-bold mt-10 text-center">
             Submit Tax Filing
           </h1>
-          <StepProgress />
+          <StepProgress step={step} totalSteps={totalSteps} />
           <Routes>
             <Route
               path="/"
               element={
                 <div>
-                  <Filing onValidationCheck={setIsValid}
-                  taxData={setFormData} />
-                  <ButtonClick isValid={isValid} formData={formData} />
+                  <Filing
+                    onValidationCheck={setIsValid}
+                    taxData={setFormData}
+                  />
+                  <ButtonClick
+                    isValid={isValid}
+                    formData={formData}
+                    onNext={handleNext}
+                    onPrev={handlePrev}
+                  />
                 </div>
               }
             />
