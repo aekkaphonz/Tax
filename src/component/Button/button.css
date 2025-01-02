@@ -1,0 +1,61 @@
+:root{
+    --line-border-fill : #630cf1;
+    --line-border-empty : #383838;
+  }
+  
+
+  .btns {
+    display: flex;
+    gap: 15px;
+    margin: 1rem 0;
+  }
+  
+
+.btn1{
+    outline: none;
+    border: 2px solid black;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 2rem;
+    background-color: white;
+    color: black;
+    padding: 10px 40px;
+}
+.btn2{
+    outline: none;
+    border: 2px solid black;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 2rem;
+    background-color: black;
+    color: #fff;
+    padding: 10px 40px;
+}
+
+
+.btn:active{
+    outline: none;
+    transform: scale(0.98);
+}
+
+.disable{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    border-radius: 4px;
+    color: #000;
+    padding: 4px 40px;
+    color: var(--line-border-empty);
+    cursor: not-allowed;
+}
+
+
+.btn__center{
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;  
+    align-items: center; 
+}
