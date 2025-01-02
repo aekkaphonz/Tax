@@ -12,7 +12,7 @@ const ButtonClick: React.FC<ButtonClickProps> = ({ isValid, formData, onNext, on
   const navigate = useNavigate();
 
   const goBack = () => {
-    onPrev(); // ย้อนกลับไป Step ก่อนหน้า
+    onPrev(); 
     const currentPath = "/tax-fil-detail";
 
     if (currentPath === "/tax-fil-detail") {
@@ -27,7 +27,7 @@ const ButtonClick: React.FC<ButtonClickProps> = ({ isValid, formData, onNext, on
       alert("Invalid Data");
       return;
     }
-    onNext(); // ไปยัง Step ถัดไป
+    onNext(); 
     navigate("/tax-fil-detail", { state: formData });
   };
 

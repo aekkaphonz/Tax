@@ -37,13 +37,13 @@ const TaxCalculator = ({ selectedType }: { selectedType: string }) => {
       setAmountTax(`${formatCurrency(rawValue)} THB`);
       setTotalVat(`${formatCurrency(vatValue)} THB`);
 
-      // แยกการแสดงผลตาม selectedType
+
       if (selectedType === "0") {
-        // หน้า Ordinary
+     
         console.log("Amount Tax:", rawValue);
         console.log("VAT:", vatValue);
       } else if (selectedType === "1") {
-        // หน้า Additional
+  
         const surchargeValue = Math.round(rawValue * 0.1 * 1000) / 1000;
         const penaltyValue = 200.0;
         const total = vatValue + surchargeValue + penaltyValue;
