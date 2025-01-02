@@ -1,5 +1,5 @@
 import React from "react";
-import "../Additional/main.css";
+import "../CssFile/main.css";
 
 type TotalAmountProps = {
   totalAmount: string;

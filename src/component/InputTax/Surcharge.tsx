@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCircleQuestion } from "react-icons/fa6";
-import "../Additional/main.css";
+import "../CssFile/main.css";
 
 type SurchargeProps = {
   surcharge: string;

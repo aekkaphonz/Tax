@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
-import "../Additional/main.css";
-import { useEffect } from "react";
+import "../CssFile/main.css";
+
 
 function TaxFilDetail() {
   const location = useLocation();
