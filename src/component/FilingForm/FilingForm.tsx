@@ -17,9 +17,7 @@ type FilingForms = {
   onValidationCheck: (isValid: boolean) => void;
   taxData: (data: any) => void;
 };
-function FilingForm({ onValidationCheck , taxData}: FilingForms) {
- 
-
+function FilingForm({ onValidationCheck, taxData }: FilingForms) {
   const [selectedType, setSelectedType] = useState("0");
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
@@ -50,19 +48,46 @@ function FilingForm({ onValidationCheck , taxData}: FilingForms) {
     setTotalAmount("");
   }, [selectedType]);
 
+  const months = [
+    { value: "01", label: "January" },
+    { value: "02", label: "February" },
+    { value: "03", label: "March" },
+    { value: "04", label: "April" },
+    { value: "05", label: "May" },
+    { value: "06", label: "June" },
+    { value: "07", label: "July" },
+    { value: "08", label: "August" },
+    { value: "09", label: "September" },
+    { value: "10", label: "October" },
+    { value: "11", label: "November" },
+    { value: "12", label: "December" },
+  ];
+
   useEffect(() => {
+    const filingTypeLabel =
+      selectedType === "0" ? "Ordinary Filing" : "Additional Filing";
+      const nameMonth = months.find((month) => month.value === selectedMonth)?.label || "";
+
     taxData({
-      filingType: selectedType,
-      vatMonth: selectedMonth,
+      filingType: filingTypeLabel,
+      vatMonth: nameMonth,
       vatYear: selectedYear,
       taxableValue: amountTax,
       vatValue: totalVat,
       surcharge: surcharge,
       penalty: penalty,
-      totalAmount: totalAmount
+      totalAmount: totalAmount,
     });
-    
-  }, [selectedType, selectedMonth, selectedYear, amountTax, totalVat, surcharge, penalty, totalAmount]);
+  }, [
+    selectedType,
+    selectedMonth,
+    selectedYear,
+    amountTax,
+    totalVat,
+    surcharge,
+    penalty,
+    totalAmount,
+  ]);
 
   const validateForm = () => {
     if (!selectedMonth || !selectedYear || !amountTax || !totalVat) {

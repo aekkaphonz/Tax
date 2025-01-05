@@ -1,19 +1,17 @@
 import { useLocation } from "react-router-dom";
 import "../CssFile/main.css";
 
-
 function TaxFilDetail() {
   const location = useLocation();
-const {
-  filingType,
-  vatMonth,
-  vatYear,
-  taxableValue,
-  vatValue,
-  surcharge,
-  penalty,
-} = location.state || {};
-
+  const {
+    filingType,
+    vatMonth,
+    vatYear,
+    taxableValue,
+    vatValue,
+    surcharge,
+    penalty,
+  } = location.state || {};
 
   const parseValue = (value: string): number => {
     if (!value) return 0;
@@ -21,19 +19,25 @@ const {
     return parseFloat(value.replace(/,|THB/g, "").trim());
   };
 
+  console.log("filingType received:", filingType);
   const filingTypeText =
-    filingType === "0" ? "Ordinary Filing" : "Additional Filing";
+    filingType === "Ordinary Filing"
+      ? "Ordinary Filing"
+      : filingType === "Additional Filing"
+      ? "Additional Filing"
+      : "Unknown Filing Type";
 
   const totalAmountPayable =
     filingType === "0"
       ? parseValue(vatValue)
       : parseValue(vatValue) + parseValue(surcharge) + parseValue(penalty);
 
-      const formattedTotalAmountPayable = new Intl.NumberFormat("en-US", {
-        style: "decimal",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      }).format(totalAmountPayable) + " THB";
+  const formattedTotalAmountPayable =
+    new Intl.NumberFormat("en-US", {
+      style: "decimal",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(totalAmountPayable) + " THB";
   const months = [
     { value: "01", label: "January" },
     { value: "02", label: "February" },
@@ -50,7 +54,9 @@ const {
   ];
 
   const monthName =
-    months.find((month) => month.value === vatMonth)?.label || "Unknown Month";
+    months.find((month) => month.label === vatMonth)?.label || "Unknown Month";
+  console.log("vatMonth received:", vatMonth);
+  console.log("monthName found:", monthName);
 
   return (
     <div>
