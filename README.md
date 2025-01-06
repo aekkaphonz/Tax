@@ -1,50 +1,64 @@
-# React + TypeScript + Vite
+# Submit Tax Filing
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## การติดตั้ง
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1.โคลนโปรเจคต์นี้ไปยังเครื่องของคุณ:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/aekkaphonz/Tax.git
 ```
+2.เข้าไปยัง directory ของโปรเจกต์:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd tax
 ```
+3.ติดตั้ง dependencies ด้วยคำสั่ง:
+```bash
+npm install
+```
+## การรันแอปพลิเคชัน
+1.เริ่มต้นเซิร์ฟเวอร์ด้วยคำสั่ง:
+```bash
+npm run dev
+```
+2.เปิดเบราว์เซอร์และไปที่:
+
+`http://localhost:5173`
+
+
+## การสร้างเวอร์ชันสำหรับการผลิต
+1.สร้างแอปพลิเคชันสำหรับการผลิต:
+```bash
+npm run build
+```
+2.เริ่มต้นเซิร์ฟเวอร์การผลิต:
+```bash
+npm start
+```
+## Doc
+- React tutorial
+[Click](https://youtu.be/4tzmynf93p8?si=KH1qEM15xiY1xz3t)
+- TypeScript Full Course [Click](https://youtu.be/iJkaAJUzeWQ?si=ptwjpPR80QzZf5js)
+
+## Sitemap
+- หน้ารายละเอียดการยื่นภาษี
+  - ประเภทการยื่น (Type of filing)
+    - การยื่นภาษีตามปกติ (Ordinary)
+      - เลือกเดือนและปี (Month & Year)
+      - กรอกภาษี (Tax)
+      - คำนวณภาษีมูลค่าเพิ่ม (Vat)
+    - การยื่นภาษีเพิ่มเติม (Additional)
+      - เลือกเดือน ปี และเวลา
+      - กรอกภาษี (Tax)
+      - คำนวณภาษีมูลค่าเพิ่ม (Vat)
+      - ค่าธรรมเนียมเพิ่มเติม (Surcharge)
+      - ค่าปรับ (Penalty)
+      - จำนวนภาษีทั้งหมด
+- หน้าตรวจสอบและยืนยัน
+  - ประเภทการยื่น (Type of filing)
+  - เดือนและปีที่ทำการยื่นเอกสาร
+  - ภาษีแต่ละประเภท
+  - ปุ่มยืนยัน (Confirm and Submit)
+
+  

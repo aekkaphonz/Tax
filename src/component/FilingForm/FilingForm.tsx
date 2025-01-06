@@ -66,7 +66,8 @@ function FilingForm({ onValidationCheck, taxData }: FilingForms) {
   useEffect(() => {
     const filingTypeLabel =
       selectedType === "0" ? "Ordinary Filing" : "Additional Filing";
-      const nameMonth = months.find((month) => month.value === selectedMonth)?.label || "";
+    const nameMonth =
+      months.find((month) => month.value === selectedMonth)?.label || "";
 
     taxData({
       filingType: filingTypeLabel,
@@ -163,7 +164,7 @@ function FilingForm({ onValidationCheck, taxData }: FilingForms) {
           <div className="vat__selectors">
             <div>
               <div className="subhead__title">
-                VAT Month <span className="last-letter">*</span>
+                Tax Month <span className="last-letter">*</span>
               </div>
               <div style={{ display: "flex", gap: "16px" }}>
                 <VATMonthSelector

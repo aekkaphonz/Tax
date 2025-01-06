@@ -6,9 +6,10 @@ type RadioGroupProps = {
   onRadioChange: (value: string) => void;
 };
 
-
-const RadioGroup: React.FC<RadioGroupProps> = ({ selectedType, onRadioChange }) => (
-  
+const RadioGroup: React.FC<RadioGroupProps> = ({
+  selectedType,
+  onRadioChange,
+}) => (
   <div className="flex space-x-6 mt-4 gap-8">
     <div className="flex items-center space-x-2">
       <input
@@ -33,9 +34,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ selectedType, onRadioChange }) 
         checked={selectedType === "1"}
         onChange={(e) => onRadioChange(e.target.value)}
       />
-      <label htmlFor="additional" className="form__label">
-        Additional Filing
-      </label>
+      <label className="form__label">Additional Filing</label>
       <FaCircleQuestion />
     </div>
   </div>
